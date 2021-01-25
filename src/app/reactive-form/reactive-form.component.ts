@@ -11,6 +11,13 @@ export class ReactiveFormComponent implements OnInit {
 
   myForm!: FormGroup;
 
+  jobPlaces: string[] = [
+    'Google',
+    'Yandex',
+    'Amazon',
+    'Apple'
+  ];
+
   constructor(private fb: FormBuilder) {
     this._createForm();
   }
@@ -25,7 +32,8 @@ export class ReactiveFormComponent implements OnInit {
       birtDay: ['', [Validators.required]],
       sex: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.email]],
+      jobPlace: ''
     });
 
     // this.buyTicketForm.valueChanges.subscribe(v => {
