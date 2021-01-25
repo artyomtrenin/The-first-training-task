@@ -29,7 +29,7 @@ export class ReactiveFormComponent implements OnInit {
         lastName: ['', [Validators.required]],
         thirdName: ''
       }),
-      birtDay: ['', [Validators.required]],
+      birthDay: ['', [Validators.required]],
       sex: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]],
       email: ['', [Validators.email]],
@@ -50,6 +50,10 @@ export class ReactiveFormComponent implements OnInit {
   // }
 
   ngOnInit(): void {
+  }
+
+  viewForm(): void {
+    console.log(this.myForm.getRawValue());
   }
 
   get _firstName(): AbstractControl | null {

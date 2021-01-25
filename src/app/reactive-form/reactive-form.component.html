@@ -40,11 +40,11 @@
       <mat-label>Пол</mat-label>
       <mat-radio-group class="RG" formControlName="sex" color="primary">
         <div>
-          <mat-radio-button value="1">Женский</mat-radio-button>
+          <mat-radio-button value="Женский">Женский</mat-radio-button>
         </div>
 
         <div>
-          <mat-radio-button value="2">Мужской</mat-radio-button>
+          <mat-radio-button value="Мужской">Мужской</mat-radio-button>
         </div>
       </mat-radio-group>
   </div>
@@ -81,7 +81,36 @@
   </div>
 
   <div>
-      <mat-card>Здесь будут данные</mat-card>
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{myForm.get('name.lastName')?.value}} {{myForm.get('name.firstName')?.value}}</mat-card-title>
+        <mat-card-subtitle>{{myForm.get('name.thirdName')?.value}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          <b>Дата рождения:</b><br>{{myForm.get('birthDay')?.value}}
+        </p>
+        <p>
+          <b>Пол:</b><br>{{myForm.get('sex')?.value}}
+        </p>
+        <p>
+          <b>Номер телефона:</b><br>{{myForm.get('phoneNumber')?.value}}
+        </p>
+        <p>
+          <b>E-mail:</b><br>{{myForm.get('email')?.value}}
+        </p>
+        <p>
+          <b>Место работы:</b><br>{{myForm.get('jobPlace')?.value}}
+        </p>
+      </mat-card-content>
+<!--      <mat-card-actions>-->
+<!--        <button mat-button>LIKE</button>-->
+<!--        <button mat-button>SHARE</button>-->
+<!--      </mat-card-actions>-->
+    </mat-card>
   </div>
+
+  <button mat-raised-button color="primary" (click)="viewForm()">Отправить</button>
 
 </form>
