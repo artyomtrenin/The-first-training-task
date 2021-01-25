@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -12,18 +12,18 @@ export class ReactiveFormComponent implements OnInit {
   buyTicketForm!: FormGroup;
   obs!: Observable<any>;
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
     this._createForm();
   }
 
   private _createForm(): void {
-    this.buyTicketForm = new FormGroup({
-      passenger: new FormControl(null),
-      passengerAge: new FormControl(5),
+    this.buyTicketForm = this.fb.group({
+      passenger: '',
+      passengerAge: '',
 
-      passengerContacts: new FormGroup({
-        telegram: new FormControl(null),
-        whatsapp: new FormControl(null)
+      passengerContacts: this.fb.group({
+        telegram: '',
+        whatsapp: ''
       })
     });
 
@@ -36,6 +36,8 @@ export class ReactiveFormComponent implements OnInit {
     // console.log('click');
     // console.log(this.buyTicketForm.getRawValue());
     console.log(this.buyTicketForm.get('passengerContacts.telegram')?.value);
+    console.log(this.buyTicketForm.get('passengerContacts.whatsapp')?.status);
+    // this.buyTicketForm.patchValue({passenger: 'Тренин Артем'});
   }
 
   ngOnInit(): void {
