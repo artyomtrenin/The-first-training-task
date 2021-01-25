@@ -2,11 +2,17 @@
   <div>
     <label>Passenger</label>
     <input type="text" formControlName="passenger" />
+    <div *ngIf="_passenger?.invalid && (_passenger?.touched || _passenger?.dirty)">
+      <span *ngIf="_passenger?.errors?.required">Обязательное поле</span>
+    </div>
   </div>
 
   <div>
     <label>Age</label>
     <input type="number" formControlName="passengerAge" />
+    <div *ngIf="_age?.invalid && (_age?.touched || _age?.dirty)">
+      <span *ngIf="_age?.errors?.min">Минимум: 15</span>
+    </div>
   </div>
 
   <div formGroupName="passengerContacts">
