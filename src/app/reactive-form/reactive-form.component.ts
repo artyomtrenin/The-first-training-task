@@ -47,4 +47,12 @@ export class ReactiveFormComponent implements OnInit {
   get _firstName(): AbstractControl | null {
     return this.myForm.get('name.firstName');
   }
+
+  get _lastName(): AbstractControl | null {
+    return this.myForm.get('name.lastName');
+  }
+
+  get _thirdName(): AbstractControl | null {
+    return this.myForm.get('name.thirdName');
+  }
 }
