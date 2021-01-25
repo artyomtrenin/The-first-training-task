@@ -1,33 +1,43 @@
-<form [formGroup]="buyTicketForm" novalidate>
-  <div>
-    <label>Passenger</label>
-    <input type="text" formControlName="passenger" />
-    <div *ngIf="_passenger?.invalid && (_passenger?.touched || _passenger?.dirty)">
-      <span *ngIf="_passenger?.errors?.required">Обязательное поле</span>
-    </div>
-  </div>
+<!--<form [formGroup]="buyTicketForm" novalidate>-->
+<!--  <div>-->
+<!--    <label>Passenger</label>-->
+<!--    <input type="text" formControlName="passenger" />-->
+<!--    <div *ngIf="_passenger?.invalid && (_passenger?.touched || _passenger?.dirty)">-->
+<!--      <span *ngIf="_passenger?.errors?.required">Обязательное поле</span>-->
+<!--    </div>-->
+<!--  </div>-->
 
-  <div>
-    <label>Age</label>
-    <input type="number" formControlName="passengerAge" />
-    <div *ngIf="_age?.invalid && (_age?.touched || _age?.dirty)">
-      <span *ngIf="_age?.errors?.min">Минимум: 15</span>
-    </div>
-  </div>
+<!--  <div>-->
+<!--    <label>Age</label>-->
+<!--    <input type="number" formControlName="passengerAge" />-->
+<!--    <div *ngIf="_age?.invalid && (_age?.touched || _age?.dirty)">-->
+<!--      <span *ngIf="_age?.errors?.min">Минимум: 15</span>-->
+<!--    </div>-->
+<!--  </div>-->
 
-  <div formGroupName="passengerContacts">
-    <div>
-      <label>Telegram</label>
-      <input type="text" formControlName="telegram" />
-    </div>
+<!--  <div formGroupName="passengerContacts">-->
+<!--    <div>-->
+<!--      <label>Telegram</label>-->
+<!--      <input type="text" formControlName="telegram" />-->
+<!--    </div>-->
 
-    <div>
-      <label>Whatsapp</label>
-      <input type="text" formControlName="whatsapp" />
-    </div>
-  </div>
+<!--    <div>-->
+<!--      <label>Whatsapp</label>-->
+<!--      <input type="text" formControlName="whatsapp" />-->
+<!--    </div>-->
+<!--  </div>-->
 
-  <div>
-    <input type="submit" value="Отправить" (click)="clickSubmit()">
+<!--  <div>-->
+<!--    <input type="submit" value="Отправить" (click)="clickSubmit()">-->
+<!--  </div>-->
+<!--</form>-->
+
+<mat-form-field [formGroup]="myForm">
+  <div formGroupName="name">
+    <mat-label>ФИО</mat-label>
+    <input matInput type="text" formControlName="firstName">
+    <button mat-button *ngIf="_firstName" matSuffix mat-icon-button aria-label="Clear" (click)="myForm.get('name').patchValue({firstName: ''})">
+      <mat-icon>close</mat-icon>
+    </button>
   </div>
-</form>
+</mat-form-field>
