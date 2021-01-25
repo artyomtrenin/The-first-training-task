@@ -1,0 +1,27 @@
+<form [formGroup]="buyTicketForm" novalidate>
+  <div>
+    <label>Passenger</label>
+    <input type="text" formControlName="passenger" />
+  </div>
+
+  <div>
+    <label>Age</label>
+    <input type="number" formControlName="passengerAge" />
+  </div>
+
+  <div formGroupName="passengerContacts">
+    <div>
+      <label>Telegram</label>
+      <input type="text" formControlName="telegram" />
+    </div>
+
+    <div>
+      <label>Whatsapp</label>
+      <input type="text" formControlName="whatsapp" />
+    </div>
+  </div>
+
+  <div>
+    <input type="submit" value="Отправить" (click)="clickSubmit()">
+  </div>
+</form>
