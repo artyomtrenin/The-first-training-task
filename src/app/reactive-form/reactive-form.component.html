@@ -36,11 +36,20 @@
   <div>
     <mat-form-field appearance="fill">
       <mat-label>Дата рождения</mat-label>
-      <input [disabled]="true" matInput [matDatepicker]="picker" formControlName="birthDay" [max]="maxDate" [min]="minDate" required>
+      <input matInput [matDatepicker]="picker" formControlName="birthDay" [max]="maxDate" [min]="minDate" required>
       <mat-datepicker-toggle matSuffix [for]="picker" disabled="false"></mat-datepicker-toggle>
       <mat-datepicker #picker startView="year" touchUi="true" disabled="false"></mat-datepicker>
       <mat-error *ngIf="_birthDay?.hasError('required')">
         Это <strong>обязательное</strong> поле
+      </mat-error>
+      <mat-error *ngIf="_birthDay?.hasError('matDatepickerMin')">
+        Дата рождения должна быть позже или равна {{this.minDate | date: 'dd.MM.yyyy'}}
+      </mat-error>
+      <mat-error *ngIf="_birthDay?.hasError('matDatepickerMax')">
+        Дата рождения должна быть раньше или равна {{this.maxDate | date: 'dd.MM.yyyy'}}
+      </mat-error>
+      <mat-error *ngIf="_birthDay?.hasError('matDatepickerParse')">
+        Выберите корректное значение даты
       </mat-error>
     </mat-form-field>
   </div>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MatDialog} from '@angular/material/dialog';
+import {IncorectDialogComponent} from '../incorect-dialog/incorect-dialog.component';
+import {CorectDialogComponent} from '../corect-dialog/corect-dialog.component';
 // import {Observable} from 'rxjs';
 
 @Component({
@@ -23,7 +26,7 @@ export class ReactiveFormComponent implements OnInit {
     'Apple'
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, public dialog: MatDialog) {
     this._createForm();
   }
 
@@ -40,27 +43,26 @@ export class ReactiveFormComponent implements OnInit {
       email: ['', [Validators.email]],
       jobPlace: ''
     });
-
-    // this.buyTicketForm.valueChanges.subscribe(v => {
-    //   console.log(v);
-    // });
   }
-
-  // clickSubmit(): void {
-  //   // console.log('click');
-  //   // console.log(this.buyTicketForm.getRawValue());
-  //   console.log(this.myForm.get('passengerContacts.telegram')?.value);
-  //   console.log(this.myForm.get('passenger')?.status);
-  //   // this.buyTicketForm.patchValue({passenger: 'Тренин Артем'});
-  // }
 
   ngOnInit(): void {
   }
 
   submitForm(): void {
-    // this.submitted = true;
-    // console.log(this.myForm);
-    //console.log(this.myForm.get('name.firstName')?.errors);
+    this.submitted = true;
+    if (this.myForm.invalid){
+      this.dialog.open(IncorectDialogComponent);
+    } else {
+      const dialogRef = this.dialog.open(CorectDialogComponent);
+      dialogRef.afterClosed().subscribe(result => {
+        if (result === 'true') {
+          console.log('Форма отправлена');
+          console.log(this.myForm.getRawValue());
+        } else {
+          console.log('Отправка  отменена');
+        }
+      });
+    }
   }
 
   get _firstName(): AbstractControl | null {

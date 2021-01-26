@@ -17,11 +17,20 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatCardModule} from '@angular/material/card';
 import {NgxMaskModule} from 'ngx-mask';
 import {MAT_DATE_LOCALE} from '@angular/material/core';
+import {MatDialogModule} from '@angular/material/dialog';
+import { CorectDialogComponent } from './corect-dialog/corect-dialog.component';
+import { IncorectDialogComponent } from './incorect-dialog/incorect-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReactiveFormComponent
+    ReactiveFormComponent,
+    CorectDialogComponent,
+    IncorectDialogComponent
+  ],
+  entryComponents: [
+    CorectDialogComponent,
+    IncorectDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +46,8 @@ import {MAT_DATE_LOCALE} from '@angular/material/core';
     MatRadioModule,
     MatAutocompleteModule,
     MatCardModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    MatDialogModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'ru-RU'}
