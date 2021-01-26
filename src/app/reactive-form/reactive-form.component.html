@@ -120,19 +120,19 @@
         <mat-card-subtitle>{{_thirdName?.value}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <p>
+        <p *ngIf="_birthDay?.value">
           <b>Дата рождения:</b><br>{{_birthDay?.value | date:'dd.MM.yyyy'}}
         </p>
-        <p>
+        <p *ngIf="_sex?.value">
           <b>Пол:</b><br>{{_sex?.value}}
         </p>
-        <p>
+        <p *ngIf="_phoneNumber?.value">
           <b>Номер телефона:</b><br>{{_phoneNumber?.value}}
         </p>
-        <p>
+        <p *ngIf="_email?.value">
           <b>E-mail:</b><br>{{_email?.value}}
         </p>
-        <p>
+        <p *ngIf="_jobPlace?.value">
           <b>Место работы:</b><br>{{myForm.get('jobPlace')?.value}}
         </p>
       </mat-card-content>

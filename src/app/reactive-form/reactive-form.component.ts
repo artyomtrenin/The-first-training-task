@@ -98,4 +98,8 @@ export class ReactiveFormComponent implements OnInit {
   get _email(): AbstractControl | null {
     return this.myForm.get('email');
   }
+
+  get _jobPlace(): AbstractControl | null {
+    return this.myForm.get('jobPlace');
+  }
 }
