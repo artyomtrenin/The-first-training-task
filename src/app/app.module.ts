@@ -15,6 +15,8 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatCardModule} from '@angular/material/card';
+import {NgxMaskModule} from 'ngx-mask';
+import {MAT_DATE_LOCALE} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -34,9 +36,12 @@ import {MatCardModule} from '@angular/material/card';
     MatNativeDateModule,
     MatRadioModule,
     MatAutocompleteModule,
-    MatCardModule
+    MatCardModule,
+    NgxMaskModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'ru-RU'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

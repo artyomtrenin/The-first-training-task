@@ -11,6 +11,9 @@ export class ReactiveFormComponent implements OnInit {
 
   myForm!: FormGroup;
 
+  minDate = new Date(1910, 1, 1);
+  maxDate = new Date();
+
   jobPlaces: string[] = [
     'Google',
     'Yandex',
