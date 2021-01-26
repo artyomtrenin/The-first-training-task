@@ -10,15 +10,19 @@ import {CorectDialogComponent} from '../corect-dialog/corect-dialog.component';
   templateUrl: './reactive-form.component.html',
   styleUrls: ['./reactive-form.component.scss']
 })
+
 export class ReactiveFormComponent implements OnInit {
 
   myForm!: FormGroup;
 
+  // для выбора пола, иначе ошибка выводится сразу
   submitted = false;
 
+  // ограничения для birthDay
   minDate = new Date(1910, 1, 1);
   maxDate = new Date();
 
+  // места работы
   jobPlaces: string[] = [
     'Google',
     'Yandex',
@@ -30,6 +34,7 @@ export class ReactiveFormComponent implements OnInit {
     this._createForm();
   }
 
+ // создает форму, добавляет валидаторы
   private _createForm(): void {
     this.myForm = this.fb.group({
       name: this.fb.group({
@@ -48,6 +53,7 @@ export class ReactiveFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // отправляет или не отправляет форму, также показывает диалоги
   submitForm(): void {
     this.submitted = true;
     if (this.myForm.invalid){

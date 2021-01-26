@@ -37,8 +37,8 @@
     <mat-form-field appearance="fill">
       <mat-label>Дата рождения</mat-label>
       <input matInput [matDatepicker]="picker" formControlName="birthDay" [max]="maxDate" [min]="minDate" required>
-      <mat-datepicker-toggle matSuffix [for]="picker" disabled="false"></mat-datepicker-toggle>
-      <mat-datepicker #picker startView="year" touchUi="true" disabled="false"></mat-datepicker>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker startView="year" touchUi="true"></mat-datepicker>
       <mat-error *ngIf="_birthDay?.hasError('required')">
         Это <strong>обязательное</strong> поле
       </mat-error>
@@ -89,7 +89,7 @@
     <mat-form-field>
       <mat-label>E-mail</mat-label>
       <input matInput formControlName="email" placeholder="ex.ample@mail.com">
-      <mat-error *ngIf="_lastName?.invalid">
+      <mat-error *ngIf="_email?.hasError('email')">
         Введите корректный e-mail
       </mat-error>
     </mat-form-field>
