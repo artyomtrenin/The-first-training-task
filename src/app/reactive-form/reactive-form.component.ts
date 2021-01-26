@@ -11,6 +11,8 @@ export class ReactiveFormComponent implements OnInit {
 
   myForm!: FormGroup;
 
+  submitted = false;
+
   minDate = new Date(1910, 1, 1);
   maxDate = new Date();
 
@@ -55,8 +57,10 @@ export class ReactiveFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  viewForm(): void {
-    console.log(this.myForm.getRawValue());
+  submitForm(): void {
+    // this.submitted = true;
+    // console.log(this.myForm);
+    //console.log(this.myForm.get('name.firstName')?.errors);
   }
 
   get _firstName(): AbstractControl | null {
@@ -69,5 +73,21 @@ export class ReactiveFormComponent implements OnInit {
 
   get _thirdName(): AbstractControl | null {
     return this.myForm.get('name.thirdName');
+  }
+
+  get _birthDay(): AbstractControl | null {
+    return this.myForm.get('birthDay');
+  }
+
+  get _sex(): AbstractControl | null {
+    return this.myForm.get('sex');
+  }
+
+  get _phoneNumber(): AbstractControl | null {
+    return this.myForm.get('phoneNumber');
+  }
+
+  get _email(): AbstractControl | null {
+    return this.myForm.get('email');
   }
 }
